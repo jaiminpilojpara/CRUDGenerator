@@ -1,10 +1,8 @@
 <?php
 include 'config.php';
 
-	$numberOfField=$_POST["numberOfField"];
+$numberOfField=$_POST["numberOfField"];
 	
-	// echo "Number : ".$numberOfField;
-
 if($numberOfField > $maxNumberOfFields){
 	echo '<div class="alert alert-danger">
   			<strong>Sorry!!</strong> Only '.$maxNumberOfFields.' Fileds allowed
@@ -12,8 +10,13 @@ if($numberOfField > $maxNumberOfFields){
 	$numberOfField = $maxNumberOfFields;
 }
 
-	echo '<form id="fieldform">
-			<div class="col-md-8">
+if($numberOfField > 0){
+	echo '<div class="form-group row">
+		  		<label class="col-sm-2 col-form-label" for="tableName">Enter Table Name :</label>
+				<div class="col-md-4">
+			    <input type="number" class="form-control" id="tableName" name="tableName" placeholder="Enter Name Of Tabel">
+			    </div>
+		  	</div>
 			<table class="table table-hover">
 				<thead class="thead-default">
 					<tr>
@@ -23,21 +26,14 @@ if($numberOfField > $maxNumberOfFields){
 						<th>Length</th>
 					</tr>
 				</thead>
-			<tbody>
-  ';
-	
+			<tbody>';
+
 	for($i = 1; $i <= $numberOfField; $i++){
-		// echo '<div class="col-md-2"></div>
-		// 	<div class="col-md-4"><input type="text" class="form-control" id="field'.$i.'Name" placeholder="Enter Field Name"></div>
-		// 	<div class="col-md-4"><input type="text" class="form-control" id="field'.$i.'Type" placeholder="Enter Field Type"></div>
-		// 	<div class="col-md-2"></div>';
 		echo '<tr><th scope="row">'. $i .'</th>
 					<td>
 						<input type="text" class="form-control" id="field'.$i.'Name" name="field'.$i.'Name" placeholder="Enter Field Name">
 					</td>';
-					// <td>
-					// 	<input type="text" class="form-control" id="field'.$i.'Type" placeholder="Enter Field Type">
-					// </td>
+					
 		echo '<td>
 			<select class="form-control" name="field'.$i.'Type" id="field'.$i.'Type">
 				<option title="A 4-byte integer, signed range is -2,147,483,648 to 2,147,483,647, unsigned range is 0 to 4,294,967,295" value="INT">INT</option>
@@ -105,9 +101,13 @@ if($numberOfField > $maxNumberOfFields){
 		echo'<td>
 				<input type="number" class="form-control" id="field'.$i.'Length" placeholder="Enter Field Length">
 			</td>
-			<tr>';
+			</tr>';
 
 	}
 
-	echo "</tbody></tabel></div></form>";
+	echo '	</tbody>
+			</table>
+			<input class="btn btn-primary" id="SubmitBtn" type="submit" value="Submit">';
+
+}
 ?>

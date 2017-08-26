@@ -13,12 +13,12 @@
 <body>
 <div class="container">
 <br>
-	<form id="demoform"><!--Form Start-->
+	<form id="fieldsForm"><!--Form Start-->
 	  	
 	  	<div class="form-group row">
 	  		<label class="col-sm-2 col-form-label" for="numberOfField">Enter No. of Field :</label>
 			<div class="col-md-4">
-		    <input type="number" class="form-control" id="numberOfField" placeholder="Enter Number Of Field" onkeyup="getTableName(this.value);">
+		    <input type="number" class="form-control" id="numberOfField" placeholder="Enter Number Of Field" onkeyup="CreateTableStructure(this.value);">
 		    </div>
 	  	</div>
 
@@ -29,7 +29,7 @@
 	</form>
 	<script type="text/javascript">
 
-	function getTableName(numberOfField) {
+	function CreateTableStructure(numberOfField) {
 		$.ajax({
 		type: "POST",
 		url: "FieldGenerate.php",
@@ -39,6 +39,8 @@
 		}
 		});
 	}
+
+
 
 	</script>
 
